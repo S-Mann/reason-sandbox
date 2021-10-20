@@ -1,0 +1,13 @@
+rescript = 1
+rule astj
+  command = /home/s-mann/Personal/reason/rescript-sandbox/node_modules/rescript/linux/bsc.exe  -warn-error +101 -bs-v 9.1.4  -absname -bs-ast -o $out $i
+o src/Demo.ast : astj ../../src/Demo.res
+rule deps
+  command = /home/s-mann/Personal/reason/rescript-sandbox/node_modules/rescript/linux/bsb_helper.exe -hash c6750ded0211546f2cf470c10a59daed $in
+  restat = 1
+o src/Demo.d : deps src/Demo.ast
+rule mij
+  command = /home/s-mann/Personal/reason/rescript-sandbox/node_modules/rescript/linux/bsc.exe -I src   -warn-error +101 -bs-package-name rescript-project-template -bs-package-output commonjs:$in_d:.bs.js $i
+  dyndep = 1
+  restat = 1
+o src/Demo.cmj src/Demo.cmi ../../src/Demo.bs.js : mij src/Demo.ast

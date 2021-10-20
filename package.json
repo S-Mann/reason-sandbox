@@ -1,0 +1,22 @@
+{
+  "name": "rescript-project-template",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "rescript",
+    "clean": "rescript clean -with-deps",
+    "start": "rescript build -w",
+    "reload":"nodemon index.js"
+  },
+  "keywords": [
+    "rescript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bs-platform": "*",
+    "rescript": "*"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
+}
